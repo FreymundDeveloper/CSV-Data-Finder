@@ -1,5 +1,5 @@
 import { styled } from "styled-components";
 
-export const Tetx = styled.p`
+export const Text = styled.p`
     color: #fff;
 `;

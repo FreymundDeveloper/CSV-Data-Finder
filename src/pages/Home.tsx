@@ -1,28 +1,29 @@
 import { FiSearch } from 'react-icons/fi';
-import '../themes/styles.css'
+import { Title, ContainerHome, ContainerInput, InputSearch, ButtonSearch } from '../components';
 
 export const Home = () => {
   return (
-    <div className="container">
-      <h1 className='title'>CSV Data Finder</h1>
+    <ContainerHome>
+      <Title>CSV Data Finder</Title>
       
       <div className='buttonFileSelect'>
         <h2>File</h2>
       </div>
 
-      <div className='containerInput'>
-        <input type='text' placeholder='Enter some feature...'/>
+      <ContainerInput>
+        <InputSearch placeholder='Enter some feature...'/>
 
-        <button className='buttonSearch'>
-          <FiSearch size={25} color='#FFF'/>
-        </button>
-      </div>
+        <ButtonSearch>
+            <FiSearch size={25} color='#FFF'/>
+        </ButtonSearch>
+
+      </ContainerInput>
 
       <main className='main'>
         <h2>Date</h2>
 
       </main>
 
-    </div>
+    </ContainerHome>
   );
 }
