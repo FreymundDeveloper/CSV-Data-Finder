@@ -7,6 +7,10 @@ function App() {
     <div className="container">
       <h1 className='title'>CSV Data Finder</h1>
       
+      <div className='buttonFileSelect'>
+        <h2>File</h2>
+      </div>
+
       <div className='containerInput'>
         <input type='text' placeholder='Enter some feature...'/>
 
