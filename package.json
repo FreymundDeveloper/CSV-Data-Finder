@@ -32,8 +32,8 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start": "concurrently \"npm run start-front\" \"npm run start-back\"",
-    "start-front": "react-scripts start",
+    "dev": "concurrently \"npm run start-front\" \"npm run start-back\"",
+    "start-front": "set PORT=4000 && react-scripts start",
     "start-back": "ts-node -P ./backend/tsconfig.backend.json ./backend/src/index.ts",
     "build": "react-scripts build",
     "test": "react-scripts test",
