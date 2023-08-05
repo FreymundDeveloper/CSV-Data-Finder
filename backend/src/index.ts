@@ -37,7 +37,7 @@ app.post('/api/files', upload.single('file'), async (req: Request, res: Response
 app.get('/api/users', (req: Request, res: Response) => {
     const query = req.query.q as string;
   
-    if (!query) return res.status(400).json({ error: 'Query parameter not provided.' });
+    //if (!query) return res.status(400).json({ error: 'Query parameter not provided.' });
   
     searchFeature(query, (err, searchResult) => {
         if (err) {

@@ -1,29 +1,30 @@
-import { FiSearch } from 'react-icons/fi';
-import { Title, ContainerHome, ContainerInput, InputSearch, ButtonSearch } from '../components';
+import React, { useState } from 'react';
+import { Title, ContainerHome, InputSearch, InputFile, CardGenerator } from '../components';
 
 export const Home = () => {
-  return (
+    const [isFileSelected, setIsFileSelected] = useState(false);
+    const [queryParams, setQueryParams] = useState('');
+
+    const handleFileUpload = (responseData: any) => {
+        console.log('Resposta do servidor:', responseData);
+        // Faça algo com a resposta do servidor, se necessário
+        setQueryParams('');
+        setIsFileSelected(true);
+    };
+
+    const handleChangeQueryParam = (value: any) => {
+        setQueryParams(value);
+    };
+    return (
     <ContainerHome>
-      <Title>CSV Data Finder</Title>
-      
-      <div className='buttonFileSelect'>
-        <h2>File</h2>
-      </div>
+        <Title>CSV Data Finder</Title>
+        
+        <InputFile onUpload={handleFileUpload} isFileSelected={isFileSelected} />
 
-      <ContainerInput>
-        <InputSearch placeholder='Enter some feature...'/>
+        <InputSearch onChangeQueryParam={handleChangeQueryParam}/>
 
-        <ButtonSearch>
-            <FiSearch size={25} color='#FFF'/>
-        </ButtonSearch>
-
-      </ContainerInput>
-
-      <main className='main'>
-        <h2>Date</h2>
-
-      </main>
+        <CardGenerator queryParams={queryParams} isFileSelected={isFileSelected} />
 
     </ContainerHome>
-  );
+);
 }
