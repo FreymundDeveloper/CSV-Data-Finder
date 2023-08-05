@@ -7,7 +7,6 @@ export const Home = () => {
 
     const handleFileUpload = (responseData: any) => {
         console.log('Resposta do servidor:', responseData);
-        // Faça algo com a resposta do servidor, se necessário
         setQueryParams('');
         setIsFileSelected(true);
     };

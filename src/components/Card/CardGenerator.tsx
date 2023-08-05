@@ -21,7 +21,7 @@ export const CardGenerator: React.FC<CardGeneratorProps> = ({ queryParams, isFil
             setJsonData(response.data);
             setIsDataLoaded(true);
         } catch (error) {
-            console.error('Erro ao obter os dados:', error);
+            console.error('Error returned:', error);
         }
     };
 

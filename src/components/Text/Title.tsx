@@ -13,4 +13,11 @@ export const Title = styled.h1`
             transform: rotateX(0deg);
         };
     };
+
+    @media (max-width: 620px) {
+            font-size: 40px;
+            width: 80%;
+            min-height: 100px;
+            margin-top: 50px;
+        };
 `;

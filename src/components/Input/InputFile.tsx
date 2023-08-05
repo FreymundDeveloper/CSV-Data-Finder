@@ -41,7 +41,7 @@ export const InputFile: React.FC<InputFileProps> = ({ onUpload, isFileSelected }
                 onChange={handleInputChange}
             />
             <SelectButton onClick={() => fileInputRef.current && fileInputRef.current.click()}>
-                Selecionar Arquivo
+                Select File
             </SelectButton>
             {selectedFileName && <FileName>{selectedFileName}</FileName>}
         </Container>
