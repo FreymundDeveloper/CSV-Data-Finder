@@ -7,7 +7,7 @@ import { createJSONFile } from './controller/generateData';
 import { searchFeature } from './controller/searchController';
 
 const app = express();
-const port = 4000;
+const port = 3000;
 const upload = multer({ storage: multer.diskStorage({ destination: 'backend/src/data', filename: (req, file, cb) => {
         cb(null, 'data_generate.csv');   
     },}),
