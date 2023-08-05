@@ -1,13 +1,15 @@
 
-The application if specified requirements:
+About the application and specified requirements:
 
-* Backend localhost on port 3000;
+* Backend localhost:3000;
 
-* Frontend localhost on port 4000;
+* Frontend localhost:4000;
 
-* Scripts specifications (npm run dev, npm run test, npm install);
+* Scripts specifications (npm run dev, npm run "test", npm install);
 
-* Routes EndPoints;
+* Routes EndPoints [POST /api/files] and [GET /api/users];
+
+* back-to-front integration;
 
 ...
 
