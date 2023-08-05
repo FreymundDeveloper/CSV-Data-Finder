@@ -4,6 +4,7 @@ import bodyParser from 'body-parser';
 import multer from 'multer';
 import { convertToJSON } from './controller/convertCSV';
 import { createJSONFile } from './controller/generateData';
+import { searchFeature } from './controller/searchController';
 
 const app = express();
 const port = 4000;
@@ -14,10 +15,6 @@ const upload = multer({ storage: multer.diskStorage({ destination: 'backend/src/
 
 app.use(cors());
 app.use(bodyParser.json());
-
-app.get('/', (req, res) => {
-    res.send('Hello, this is your backend!');
-});
   
 app.post('/api/files', upload.single('file'), async (req: Request, res: Response) => {
     try {
@@ -27,15 +24,33 @@ app.post('/api/files', upload.single('file'), async (req: Request, res: Response
 
         const jsonData = await convertToJSON('backend/src/data/data_generate.csv');
 
-        const outputFilePath = 'backend/src/data/data_generate.json';
-        createJSONFile(jsonData, outputFilePath);
+        const buildFilePath = 'backend/src/data/data_generate.json';
+        createJSONFile(jsonData, buildFilePath);
 
         res.status(200).json({ message: 'Conversion completed and data saved.' });
     } 
     catch (error) {
         res.status(500).json({ error: 'Error processing CSV file.' });
     }
-  });
+});
+
+app.get('/api/users', (req: Request, res: Response) => {
+    const query = req.query.q as string;
+  
+    if (!query) return res.status(400).json({ error: 'Query parameter not provided.' });
+  
+    searchFeature(query, (err, searchResult) => {
+        if (err) {
+            return res.status(500).json({ error: 'Error searching data.'});
+        }
+
+        if (searchResult && searchResult.length > 0) {
+            res.status(200).json(searchResult);
+        } else {
+            res.status(404).json({ error: 'No results found.'});
+        }
+    });
+});
   
 
 app.listen(port, () => {

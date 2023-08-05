@@ -6,7 +6,7 @@ export function convertToJSON(fileCSV: string): Promise<any[]> {
         const jsonData: any[] = [];
 
         fs.createReadStream(fileCSV)
-            .pipe(csvParser())
+            .pipe(csvParser({ mapHeaders: ({ header }) => header.replace(/\\?"|\\?"/g, '').trim() }))
             .on('data', (row: any) => {
                 if (Object.keys(row).length > 0) jsonData.push(row);
         })
