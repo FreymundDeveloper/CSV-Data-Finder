@@ -2,9 +2,8 @@ import React, { useRef, useState } from 'react';
 import axios from 'axios';
 import { styled } from "styled-components";
 
-// Defina o tipo para a propriedade 'onUpload'
 type InputFileProps = {
-  onUpload: (responseData: any) => void; // Substitua 'any' pelo tipo real dos dados de resposta
+  onUpload: (responseData: any) => void;
   isFileSelected: boolean;
 };
 
