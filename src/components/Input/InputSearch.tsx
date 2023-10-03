@@ -59,7 +59,7 @@ const ButtonSearch = styled.button`
 `;
 
 const FormInput = styled.form`
-    background-color: rgba(255, 255, 2555, 0.2);
+    background-color: rgba(255, 255, 255, 0.51);
     padding: 15px;
     margin: 34px 0;
     display: flex;

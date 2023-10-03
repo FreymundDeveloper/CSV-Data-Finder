@@ -14,8 +14,8 @@ export const InputFile: React.FC<InputFileProps> = ({ onUpload, isFileSelected }
     const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         const selectedFile = event.target.files && event.target.files[0];
         if (selectedFile) {
-        setSelectedFileName(selectedFile.name);
-        uploadFile(selectedFile);
+            setSelectedFileName(selectedFile.name);
+            uploadFile(selectedFile);
         }
     };
 
@@ -28,7 +28,7 @@ export const InputFile: React.FC<InputFileProps> = ({ onUpload, isFileSelected }
 
         onUpload(response.data);
         } catch (error) {
-        console.error('Erro ao enviar o arquivo:', error);
+            console.error('Erro ao enviar o arquivo:', error);
         }
     };
 

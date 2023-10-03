@@ -22,7 +22,7 @@ export const Home = () => {
 
         <InputSearch onChangeQueryParam={handleChangeQueryParam}/>
 
-        <CardGenerator queryParams={queryParams} isFileSelected={isFileSelected} />
+        <CardGenerator queryParams={queryParams} isFileSelected={isFileSelected} setIsFileSelected={setIsFileSelected} />
 
     </ContainerHome>
 );

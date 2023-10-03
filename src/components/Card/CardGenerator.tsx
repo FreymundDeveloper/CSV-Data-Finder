@@ -1,21 +1,18 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import axios from 'axios';
 import { styled } from 'styled-components';
-
-type JsonData = {
-    [key: string]: string;
-};
 
 type CardGeneratorProps = {
     queryParams: string;
     isFileSelected: boolean; 
+    setIsFileSelected: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
-export const CardGenerator: React.FC<CardGeneratorProps> = ({ queryParams, isFileSelected }) => {
+export const CardGenerator: React.FC<CardGeneratorProps> = ({ queryParams, isFileSelected, setIsFileSelected }) => {
     const [jsonData, setJsonData] = useState<{ [key: string]: string }[]>([]);
     const [isDataLoaded, setIsDataLoaded] = useState<boolean>(false);
 
-    const fetchData = async () => {
+    const fetchData = useCallback(async () => {
         try {
             const response = await axios.get(`http://localhost:3000/api/users?q=${queryParams}`);
             setJsonData(response.data);
@@ -23,13 +20,14 @@ export const CardGenerator: React.FC<CardGeneratorProps> = ({ queryParams, isFil
         } catch (error) {
             console.error('Error returned:', error);
         }
-    };
+    }, [queryParams]);
 
     useEffect(() => {
-        if (isFileSelected) {
+        if (isFileSelected || queryParams !== '') {
             fetchData();
+            setIsFileSelected(false);
         } 
-    }, [queryParams, isFileSelected]);
+    }, [fetchData, setIsFileSelected, isFileSelected, queryParams]);
 
     function chunkArray(arr: any[], size: number) {
         const chunkedArr = [];
@@ -112,4 +110,3 @@ const CardTitle = styled.h2`
     const CardDescription = styled.p`
     font-size: 14px;
 `;
-// Estilos para os grupos de cards
