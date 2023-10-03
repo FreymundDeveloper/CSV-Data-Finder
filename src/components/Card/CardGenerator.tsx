@@ -1,6 +1,7 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import axios from 'axios';
 import { styled } from 'styled-components';
+import Alert from '../Container/ContainerAlert';
 
 type CardGeneratorProps = {
     queryParams: string;
@@ -11,14 +12,19 @@ type CardGeneratorProps = {
 export const CardGenerator: React.FC<CardGeneratorProps> = ({ queryParams, isFileSelected, setIsFileSelected }) => {
     const [jsonData, setJsonData] = useState<{ [key: string]: string }[]>([]);
     const [isDataLoaded, setIsDataLoaded] = useState<boolean>(false);
+    const [searchNotFount, setSearchNotFount] = useState<boolean>(false);
 
     const fetchData = useCallback(async () => {
         try {
             const response = await axios.get(`http://localhost:3000/api/users?q=${queryParams}`);
             setJsonData(response.data);
             setIsDataLoaded(true);
+            setSearchNotFount(false);
         } catch (error) {
             console.error('Error returned:', error);
+            if (axios.isAxiosError(error) && error.response && error.response.status === 404) {
+                setSearchNotFount(true); 
+            };
         }
     }, [queryParams]);
 
@@ -41,27 +47,30 @@ export const CardGenerator: React.FC<CardGeneratorProps> = ({ queryParams, isFil
     const columns = chunkArray(chunkedData, 3);
 
     return (
-        <CardGrid>
-        {isDataLoaded &&
-            columns.map((columnGroup, columnIndex) => (
-            <CardGroup key={columnIndex}>
-                {columnGroup.map((rowGroup, rowIndex) => (
-                <CardRow key={rowIndex}>
-                    {rowGroup.map((data: { [key: string]: string }, dataIndex: number) => (
-                    <CardContainer key={dataIndex}>
-                        {Object.keys(data).map((key) => (
-                        <CardContent key={key}>
-                            <CardTitle>{key}</CardTitle>
-                            <CardDescription>{data[key]}</CardDescription>
-                        </CardContent>
+        <React.Fragment>
+            <Alert message={searchNotFount ? "Nenhum resultado encontrado..." : ""} onClose={() => setSearchNotFount(false)} />
+            <CardGrid>
+            {isDataLoaded &&
+                columns.map((columnGroup, columnIndex) => (
+                <CardGroup key={columnIndex}>
+                    {columnGroup.map((rowGroup, rowIndex) => (
+                    <CardRow key={rowIndex}>
+                        {rowGroup.map((data: { [key: string]: string }, dataIndex: number) => (
+                        <CardContainer key={dataIndex}>
+                            {Object.keys(data).map((key) => (
+                            <CardContent key={key}>
+                                <CardTitle>{key}</CardTitle>
+                                <CardDescription>{data[key]}</CardDescription>
+                            </CardContent>
+                            ))}
+                        </CardContainer>
                         ))}
-                    </CardContainer>
+                    </CardRow>
                     ))}
-                </CardRow>
+                </CardGroup>
                 ))}
-            </CardGroup>
-            ))}
-        </CardGrid>
+            </CardGrid>
+        </React.Fragment>
     );
 };
 

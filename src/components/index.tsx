@@ -6,3 +6,4 @@ export * from './Input/InputSearch';
 export * from './Button/ButtonSearch';
 export * from './Input/InputFile';
 export * from './Card/CardGenerator';
+export * from './Container/ContainerAlert';
