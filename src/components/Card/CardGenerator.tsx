@@ -1,7 +1,7 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import axios from 'axios';
 import { styled } from 'styled-components';
-import Alert from '../Container/ContainerAlert';
+import { Alert } from '../Container/ContainerAlert';
 
 type CardGeneratorProps = {
     queryParams: string;
@@ -14,6 +14,17 @@ export const CardGenerator: React.FC<CardGeneratorProps> = ({ queryParams, isFil
     const [isDataLoaded, setIsDataLoaded] = useState<boolean>(false);
     const [searchNotFount, setSearchNotFount] = useState<boolean>(false);
 
+    const fetchOriginalData = useCallback(async () => {
+        try {
+            const response = await axios.get(`http://localhost:3000/api/users?q=`);
+            setJsonData(response.data);
+            setIsDataLoaded(true);
+            setSearchNotFount(true); 
+        } catch (error) {
+            console.error('Error returned:', error);
+        }
+    }, []);
+
     const fetchData = useCallback(async () => {
         try {
             const response = await axios.get(`http://localhost:3000/api/users?q=${queryParams}`);
@@ -23,17 +34,17 @@ export const CardGenerator: React.FC<CardGeneratorProps> = ({ queryParams, isFil
         } catch (error) {
             console.error('Error returned:', error);
             if (axios.isAxiosError(error) && error.response && error.response.status === 404) {
-                setSearchNotFount(true); 
+                fetchOriginalData(); 
             };
         }
-    }, [queryParams]);
+    }, [queryParams, fetchOriginalData]);
 
     useEffect(() => {
-        if (isFileSelected || queryParams !== '') {
+        if (isFileSelected || (queryParams !== '' && isDataLoaded)) {
             fetchData();
             setIsFileSelected(false);
-        } 
-    }, [fetchData, setIsFileSelected, isFileSelected, queryParams]);
+        }
+    }, [fetchData, setIsFileSelected, isFileSelected, queryParams, isDataLoaded]);
 
     function chunkArray(arr: any[], size: number) {
         const chunkedArr = [];
@@ -48,7 +59,7 @@ export const CardGenerator: React.FC<CardGeneratorProps> = ({ queryParams, isFil
 
     return (
         <React.Fragment>
-            <Alert message={searchNotFount ? "Nenhum resultado encontrado..." : ""} onClose={() => setSearchNotFount(false)} />
+            <Alert message={searchNotFount ? "No results found - Filter reloaded" : ""} onClose={() => setSearchNotFount(false)} />
             <CardGrid>
             {isDataLoaded &&
                 columns.map((columnGroup, columnIndex) => (
