@@ -1,6 +1,4 @@
-import { type } from "os";
 import { ThemeProvider } from "styled-components";
-import { color } from "styled-system";
 
 //const fontSizes: any = [20, 24, 40]
 

@@ -59,7 +59,7 @@ export const CardGenerator: React.FC<CardGeneratorProps> = ({ queryParams, isFil
 
     return (
         <React.Fragment>
-            <Alert message={searchNotFount ? "No results found - Filter reloaded" : ""} onClose={() => setSearchNotFount(false)} />
+            <Alert message={searchNotFount ? "No results found - Content reloaded" : ""} onClose={() => setSearchNotFount(false)} />
             <CardGrid>
             {isDataLoaded &&
                 columns.map((columnGroup, columnIndex) => (
