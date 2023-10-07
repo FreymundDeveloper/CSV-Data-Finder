@@ -33,7 +33,7 @@
     "start-front": "set PORT=4000 && react-scripts start",
     "start-back": "ts-node -P ./backend/tsconfig.backend.json ./backend/src/index.ts",
     "build": "react-scripts build",
-    "test": "react-scripts test",
+    "test": "react-scripts test --transformIgnorePatterns 'node_modules/(?!axios)/'",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
