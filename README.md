@@ -12,6 +12,7 @@ About the application and specified requirements:
 * back-to-front integration;
 
 * Authomated Tests(After the time out);
+
 ...
 
 I know I'm already eliminated, because ~~I couldn't develop the automated tests~~, considering that I never applied them through typescript.
