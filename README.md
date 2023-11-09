@@ -1,22 +1,22 @@
+# CSV-Data-Finder
 
-About the application and specified requirements:
+CSV Data Finder is an application that aims to convert data from files in the “.csv” format into dynamic
+cards, with the ability to filter data by search. In this way, facilitating the process of searching
+for data related to this file format.
+
+Some technologies used:
+
+* Typescript;
+* Express;
+* React;
+* Node;
+* Jest.
+
+About the app and specifications:
 
 * Backend localhost:3000;
-
 * Frontend localhost:4000;
-
 * Scripts specifications (npm run dev, npm run test, npm install);
-
 * Routes EndPoints [POST /api/files] and [GET /api/users];
-
 * back-to-front integration;
-
-* Authomated Tests(After the time out);
-
-...
-
-I know I'm already eliminated, because ~~I couldn't develop the automated tests~~, considering that I never applied them through typescript.
-
-...
-
-Thanks for the challenge, it was a great learning experience!
+* Authomated Tests.
