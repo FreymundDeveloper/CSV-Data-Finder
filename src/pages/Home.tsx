@@ -6,7 +6,7 @@ export const Home = () => {
     const [queryParams, setQueryParams] = useState('');
 
     const handleFileUpload = (responseData: any) => {
-        console.log('Resposta do servidor:', responseData);
+        console.log('Server Response:', responseData);
         setQueryParams('');
         setIsFileSelected(true);
     };
