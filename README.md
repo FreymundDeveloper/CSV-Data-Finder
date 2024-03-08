@@ -6,17 +6,33 @@ for data related to this file format.
 
 Some technologies used:
 
-* Typescript;
+* TypeScript;
 * Express;
 * React;
+* HTML;
+* CSS(Styled);
 * Node;
 * Jest.
 
-About the app and specifications:
+## Routes 
 
-* Backend localhost:3000;
-* Frontend localhost:4000;
-* Scripts specifications (npm run dev, npm run test, npm install);
-* Routes EndPoints [POST /api/files] and [GET /api/users];
-* back-to-front integration;
-* Authomated Tests.
+All routes are linked to the "localhost:3000/ ..." address. The backend runs on port 3000 and the frontend on port 4000. The application has the following endpoints:
+
+* POST - /api/files; 
+
+* GET - /api/users;
+
+## Running the app
+
+**Obs**: When finishing the application, an abnormal number of confirmation messages appear in the terminal, this is due to a problem present in the "concurrently" library itself used.
+
+```bash
+# Installation
+$ npm install
+
+# Running
+$ npm start
+
+# Running Test
+$ npm run test
+```
