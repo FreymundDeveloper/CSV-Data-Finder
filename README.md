@@ -31,7 +31,11 @@ All routes are linked to the "localhost:3000/ ..." address. The backend runs on 
 $ npm install
 
 # Running
-$ npm start
+$ npm run dev
+# Or for only the frontend
+$ start-front
+# Or for only the backend
+$ start-back
 
 # Running Test
 $ npm run test
