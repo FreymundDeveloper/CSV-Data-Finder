@@ -1,8 +1,6 @@
 # CSV-Data-Finder
 
-CSV Data Finder is an application that aims to convert data from files in the “.csv” format into dynamic
-cards, with the ability to filter data by search. In this way, facilitating the process of searching
-for data related to this file format.
+CSV Data Finder is an application that aims to convert data from files in the “.csv” format into dynamic cards, with the ability to filter data by search. In this way, facilitating the process of searching for data related to this file format.
 
 Some technologies used:
 
@@ -24,7 +22,9 @@ All routes are linked to the "localhost:3000/ ..." address. The backend runs on 
 
 ## Running the app
 
-**Obs**: When finishing the application, an abnormal number of confirmation messages appear in the terminal, this is due to a problem present in the "concurrently" library itself used.
+**Obs 1**: The application starts to present slowness and malfunction problems in files with approximately 10000 items and a high variety of fields. For use with large-scale data, improvements are necessary;
+
+**Obs 2**: When finishing the application, an abnormal number of confirmation messages appear in the terminal, this is due to a problem present in the "concurrently" library itself used.
 
 ```bash
 # Installation
@@ -33,9 +33,9 @@ $ npm install
 # Running
 $ npm run dev
 # Or for only the frontend
-$ start-front
+$ npm run start-front
 # Or for only the backend
-$ start-back
+$ npm run start-back
 
 # Running Test
 $ npm run test
