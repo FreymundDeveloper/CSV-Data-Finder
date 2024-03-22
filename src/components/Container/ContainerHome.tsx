@@ -6,5 +6,5 @@ export const ContainerHome = styled.div`
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    background: linear-gradient(#121212, #212b46);
+    background: linear-gradient(to top,#121212, #212b46);
 `;

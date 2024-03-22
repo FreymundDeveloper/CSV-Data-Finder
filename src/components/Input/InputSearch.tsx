@@ -16,6 +16,7 @@ export const InputSearch: React.FC<InputSearchProps> = ({ onChangeQueryParam }) 
     const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
         onChangeQueryParam(value);
+        setValue('')
     };
   
     return (
@@ -59,7 +60,7 @@ const ButtonSearch = styled.button`
 `;
 
 const FormInput = styled.form`
-    background-color: rgba(255, 255, 255, 0.51);
+    background-color: ${(props) => props.theme.color.mainColor};
     padding: 15px;
     margin: 34px 0;
     display: flex;

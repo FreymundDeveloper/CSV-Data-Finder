@@ -15,6 +15,8 @@ export const Title = styled.h1`
     };
 
     @media (max-width: 620px) {
+            display: flex;
+            justify-content: center;
             font-size: 40px;
             width: 80%;
             min-height: 100px;

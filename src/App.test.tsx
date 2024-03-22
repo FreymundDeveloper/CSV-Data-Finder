@@ -1,6 +1,7 @@
 import { render } from '@testing-library/react';
 import App from './App';
 import { ContainerHome, InputSearch, InputFile, CardGenerator } from './components';
+import { Theme } from './themes/theme';
 import request from 'supertest';
 import app from '../backend/src/index';
 
@@ -18,11 +19,15 @@ test('Renders CardGenerator without errors', () => {
 });
 
 test('Renders InputFile without errors', () => {
-    render(<InputFile onUpload={() => {}} isFileSelected={false} />);
+    render(<InputFile onUpload={() => {}} />);
 });
 
 test('Renders InputSearch without errors', () => {
-    render(<InputSearch onChangeQueryParam={() => {}} />);
+    render(
+        <Theme>
+            <InputSearch onChangeQueryParam={() => {}} />
+        </Theme>
+    );
 });
 
 // Back-End Tests

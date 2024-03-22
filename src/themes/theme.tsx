@@ -1,14 +1,14 @@
 import { ThemeProvider } from "styled-components";
 
-//const fontSizes: any = [20, 24, 40]
-
-const primary = '#121212';
-const secundary = '#212b46';
+const primary = '#121212', 
+        secundary = '#212b46',
+        mainColor = '#ffffff82';
 
 const theme = {
     color: {
         primary,
         secundary,
+        mainColor,
     }
 }
 

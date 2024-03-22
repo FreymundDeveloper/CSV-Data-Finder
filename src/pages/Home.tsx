@@ -7,18 +7,18 @@ export const Home = () => {
 
     const handleFileUpload = (responseData: any) => {
         console.log('Server Response:', responseData);
-        setQueryParams('');
         setIsFileSelected(true);
     };
 
-    const handleChangeQueryParam = (value: any) => {
+    const handleChangeQueryParam = (value: string) => {
         setQueryParams(value);
     };
+    
     return (
     <ContainerHome>
         <Title>CSV Data Finder</Title>
         
-        <InputFile onUpload={handleFileUpload} isFileSelected={isFileSelected} />
+        <InputFile onUpload={handleFileUpload} />
 
         <InputSearch onChangeQueryParam={handleChangeQueryParam}/>
 

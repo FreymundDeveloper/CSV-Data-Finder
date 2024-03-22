@@ -70,7 +70,7 @@ export const CardGenerator: React.FC<CardGeneratorProps> = ({ queryParams, isFil
                         <CardContainer key={dataIndex}>
                             {Object.keys(data).map((key) => (
                             <CardContent key={key}>
-                                <CardTitle>{key}</CardTitle>
+                                <CardTitle>{key}:</CardTitle>
                                 <CardDescription>{data[key]}</CardDescription>
                             </CardContent>
                             ))}
@@ -99,22 +99,30 @@ const CardGroup = styled.div`
 `;
 
 const CardRow = styled.div`
-        display: flex;
-        flex-direction: row;
-        justify-content: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    padding-top: 5px;
 `;
 
 const CardContainer = styled.div`
-    border: 1px solid #151414;
+    width: 200px;
+    max-height: 600px;
+    min-height: 200px;
+    border: 1px solid #fff;
     border-radius: 8px;
     padding: 20px;
     flex-basis: calc(33.33% - 50px);
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    background-color: #9f9d9d;
+    background-color: ${(props) => props.theme.color.mainColor};
     transition: transform 0.2s ease-in-out;
 
     &:hover {
         transform: translateY(-5px);
+    }
+
+    @media (max-width: 548px) {
+        max-width: 100px;
     }
 `;
 
@@ -127,6 +135,7 @@ const CardTitle = styled.h2`
     margin-bottom: 5px;
 `;
 
-    const CardDescription = styled.p`
+const CardDescription = styled.p`
     font-size: 14px;
+    color: #fff;
 `;

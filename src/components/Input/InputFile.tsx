@@ -4,10 +4,9 @@ import { styled } from "styled-components";
 
 type InputFileProps = {
   onUpload: (responseData: any) => void;
-  isFileSelected: boolean;
 };
 
-export const InputFile: React.FC<InputFileProps> = ({ onUpload, isFileSelected }) => {
+export const InputFile: React.FC<InputFileProps> = ({ onUpload }) => {
     const fileInputRef = useRef<HTMLInputElement | null>(null);
     const [selectedFileName, setSelectedFileName] = useState<string>('');
 
